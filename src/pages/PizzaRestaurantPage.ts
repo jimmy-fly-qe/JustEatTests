@@ -12,6 +12,7 @@ export class PizzaRestaurantPage {
     constructor(page:Page) {
         this.page = page;
 
+        this.selectMenuSection = page.getByRole('button', { name: 'Pizzas' });
         this.foodChoice = page.getByLabel('Add Margherita to the basket');
         this.foodSize = page.getByText('13"', { exact: true });        
         this.addToOrderButton = page.getByRole('button', { name: 'Add' });
