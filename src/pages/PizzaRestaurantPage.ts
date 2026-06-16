@@ -12,15 +12,13 @@ export class PizzaRestaurantPage {
     constructor(page:Page) {
         this.page = page;
 
-        this.selectMenuSection = page.getByRole('button', { name: 'Pizzas' });
         this.foodChoice = page.getByLabel('Add Margherita to the basket');
-        this.foodSize = page.locator(".single-selection-style_text__EFHuZ:has-text('13\"')");
-        this.addToOrderButton = page.locator("text='Add'");
-        this.checkoutButton = page.locator("text='Checkout ('");
+        this.foodSize = page.getByText('13"', { exact: true });        
+        this.addToOrderButton = page.getByRole('button', { name: 'Add' });
+        this.checkoutButton = page.getByRole('button', { name: 'Checkout (' });
     }
 
     async addFoodToBasket() {
-        await this.selectMenuSection.click();
         await this.foodChoice.click();
         await this.foodSize.click();
         await this.addToOrderButton.click();

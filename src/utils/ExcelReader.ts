@@ -2,7 +2,7 @@ import { readFile, utils } from 'xlsx';
 import path from 'path';
 
 export interface TestDataRow {
-    TestCaseID: string;
+    RestaurantID: string;
     Postcode: string;
     SearchResultsTitle: string;
     RestaurantName: string;

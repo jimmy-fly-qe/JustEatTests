@@ -7,7 +7,7 @@ test.describe('Just Eat - End to End Order Flow', () => {
 
     for (const data of testData) {
 
-    test(`Verify location search functionality - Case: ${data.TestCaseID}`, async ({ homePage, page }) => {
+    test(`Verify location search functionality - Case: ${data.RestaurantID}`, async ({ homePage, page }) => {
         await test.step(`When I search for location ${data.Postcode}`, async () => {
             await homePage.searchPostcode(data.Postcode);
         });
