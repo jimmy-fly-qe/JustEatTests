@@ -1,7 +1,7 @@
 import { test, expect } from '../src/fixtures/fixtures';
 import { ExcelReader } from '../src/utils/ExcelReader';
 
-const testData = ExcelReader.getSheetData('Sheet1', './test-data/qa/TestData.xlsx');
+const testData = ExcelReader.getSheetData('Sheet1', './test-data/TestData.xlsx');
 
 test.describe('Just Eat - End to End Order Flow', () => {
 

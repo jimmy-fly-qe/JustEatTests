@@ -13,7 +13,7 @@ export class ExcelReader {
     
     // Reads a specific sheet from an Excel file and returns an array of typed data rows.
     
-    static getSheetData(sheetName: string, relativeFilePath: string = './test-data/qa/TestData.xlsx'): TestDataRow[] {
+    static getSheetData(sheetName: string, relativeFilePath: string = './test-data/TestData.xlsx'): TestDataRow[] {
         const absolutePath = path.resolve(relativeFilePath);
         
         // Load the workbook
