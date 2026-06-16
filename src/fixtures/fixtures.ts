@@ -3,12 +3,15 @@ import { HomePage } from '../pages/HomePage';
 import { LoginPage } from '../pages/LoginPage';
 import { SearchResultsPage } from '../pages/SearchResultsPage';
 import { PizzaRestaurantPage } from '../pages/PizzaRestaurantPage';
+import { BasketPage } from '../pages/BasketPage';
+
 
 type MyFixtures = {
     homePage: HomePage;
     searchResultsPage: SearchResultsPage;
     pizzaRestaurantPage: PizzaRestaurantPage;
     loginPage: LoginPage;
+    basketPage: BasketPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -25,6 +28,9 @@ export const test = base.extend<MyFixtures>({
     },
     loginPage: async ({ page }, use) => {
         await use(new LoginPage(page));
+    },
+    basketPage: async ({ page }, use) => {
+        await use(new BasketPage(page));
     },
 });
 

@@ -19,7 +19,7 @@ export default defineConfig({
 
   timeout : 2 * 60 * 1000, // test should complete within 2 minutes
   expect: {
-    timeout: 20000, // expect conditions should complete within 10 seconds
+    timeout: 20000, // expect conditions should complete within 20 seconds
   },
 
   /* Run tests in files in parallel */
@@ -37,7 +37,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
-    video: 'on',
+    video: 'retain-on-failure',
     screenshot: 'only-on-failure',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */

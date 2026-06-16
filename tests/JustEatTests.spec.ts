@@ -1,4 +1,5 @@
 import { test, expect } from '../src/fixtures/fixtures';
+import { BasketPage } from '../src/pages/BasketPage';
 import { ExcelReader } from '../src/utils/ExcelReader';
 
 const testData = ExcelReader.getSheetData('Sheet1', './test-data/TestData.xlsx');
@@ -17,7 +18,7 @@ test.describe('Just Eat - End to End Order Flow', () => {
         });
     });
 
-    test(`Order Pizza and checkout basket at ${data.RestaurantName}`, async ({ homePage, loginPage, searchResultsPage, pizzaRestaurantPage, page }) => {
+    test(`Order Pizza and checkout basket at ${data.RestaurantName}`, async ({ homePage, loginPage, searchResultsPage, pizzaRestaurantPage, basketPage, page }) => {
         await test.step(`Given the user searches for restaurants in ${data.Postcode}`, async () => {
             await homePage.searchPostcode(data.Postcode);
         })
@@ -26,9 +27,10 @@ test.describe('Just Eat - End to End Order Flow', () => {
             await searchResultsPage.selectPizzaRestaurant(data.RestaurantName);
         })
 
-        await test.step('When I add the items from the menu and view the basket', async () => {
+        await test.step('When I add the items from the menu and confirm in the basket', async () => {
             await pizzaRestaurantPage.addFoodToBasket();
-            await pizzaRestaurantPage.goToCheckout();
+            await basketPage.checkOrderOptions();
+            await basketPage.goToCheckout();
         })
 
         await test.step(`Then I should see the login page before checkout possible`, async () => {

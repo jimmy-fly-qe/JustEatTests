@@ -13,7 +13,7 @@ test.describe('Just Eat - Critical Smoke Suite', { tag: '@smoke' }, () => {
         });
     });
 
-    test('Verify absolute critical checkout path baseline', async ({ homePage, searchResultsPage, pizzaRestaurantPage, loginPage, page }) => {
+    test('Verify absolute critical checkout path baseline', async ({ homePage, searchResultsPage, pizzaRestaurantPage, loginPage, basketPage, page }) => {
         await test.step('Given a baseline search for a valid location', async () => {
             await homePage.searchPostcode('AR51 1AA');
         });
@@ -24,7 +24,11 @@ test.describe('Just Eat - Critical Smoke Suite', { tag: '@smoke' }, () => {
 
         await test.step('And adding an item to progress to the gateway', async () => {
             await pizzaRestaurantPage.addFoodToBasket();
-            await pizzaRestaurantPage.goToCheckout();
+            await basketPage.goToCheckout();
+        });
+
+        await test.step('And the basket displays order options and total', async () => {
+            await basketPage.checkOrderOptions();
         });
 
         await test.step('Then the user should safely hit the checkout authentication wall', async () => {
