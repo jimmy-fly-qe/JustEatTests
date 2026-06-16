@@ -10,9 +10,9 @@ export interface TestDataRow {
 }
 
 export class ExcelReader {
-    /**
-     * Reads a specific sheet from an Excel file and returns an array of typed data rows.
-     */
+    
+    // Reads a specific sheet from an Excel file and returns an array of typed data rows.
+    
     static getSheetData(sheetName: string, relativeFilePath: string = './test-data/qa/TestData.xlsx'): TestDataRow[] {
         const absolutePath = path.resolve(relativeFilePath);
         

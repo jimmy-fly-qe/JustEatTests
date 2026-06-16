@@ -19,10 +19,10 @@ export class HomePage {
         await this.cachePopUp.click();
     }
 
-    async searchPostcode(keyword: string) {
-        await this.searchAddressBox.fill(keyword);
+    async searchPostcode(postcode: string) {
+        await this.searchAddressBox.fill(postcode);
 
-        const dynamicSuggestion = this.page.getByText(new RegExp(keyword, 'i')).first();
+        const dynamicSuggestion = this.page.getByText(postcode).first();
 
         await dynamicSuggestion.waitFor({ state: 'visible' });
         await dynamicSuggestion.click();

@@ -14,7 +14,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
     homePage: async ({ page }, use) => {
         const homePage = new HomePage(page);
-        await homePage.goToURL(); // Handles global setup automatically!
+        await homePage.goToURL();
         await use(homePage);
     },
     searchResultsPage: async ({ page }, use) => {

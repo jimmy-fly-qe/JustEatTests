@@ -16,7 +16,7 @@ export class PizzaRestaurantPage {
         this.foodChoice = page.getByLabel('Add Margherita to the basket');
         this.foodSize = page.getByText('13"', { exact: true });        
         this.addToOrderButton = page.getByRole('button', { name: 'Add' });
-        this.checkoutButton = page.getByRole('button', { name: 'Checkout (' });
+        this.checkoutButton = page.getByRole('button', { name: 'Checkout' });
     }
 
     async addFoodToBasket() {
