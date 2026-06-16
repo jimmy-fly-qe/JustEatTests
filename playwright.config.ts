@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-declare const process: { env: { CI?: string } };
+import process from 'process';
 
 /**
  * Read environment variables from file.

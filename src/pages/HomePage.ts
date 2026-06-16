@@ -3,9 +3,7 @@ import { Locator, Page } from '@playwright/test';
 export class HomePage {
 
     readonly page: Page;
-
     readonly searchAddressBox : Locator;
-    readonly expectedAddress : Locator;
     readonly cachePopUp : Locator;
 
     constructor(page:Page) {
@@ -13,7 +11,6 @@ export class HomePage {
 
         this.searchAddressBox = page.locator('[data-qa="location-panel-search-input-address-element"]'); 
         this.cachePopUp = page.locator('[data-test-id="actions-necessary-only"]')
-        this.expectedAddress = page.getByText("Testville, AR51 1AA");  
     }
 
     async goToURL() {
@@ -24,7 +21,10 @@ export class HomePage {
 
     async searchPostcode(keyword: string) {
         await this.searchAddressBox.fill(keyword);
-        await this.expectedAddress.waitFor();
-        await this.expectedAddress.click();
+
+        const dynamicSuggestion = this.page.getByText(new RegExp(keyword, 'i')).first();
+
+        await dynamicSuggestion.waitFor({ state: 'visible' });
+        await dynamicSuggestion.click();
     }
 }
